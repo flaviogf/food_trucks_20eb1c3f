@@ -12,12 +12,16 @@ RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
 
 WORKDIR /usr/local/app
 
-COPY Gemfile* ./
+COPY Gemfile ./
 
-RUN bundle install
+COPY Gemfile.lock ./
+
+RUN bundle
+
+COPY package.json ./
+
+COPY yarn.lock ./
+
+RUN yarn
 
 COPY . ./
-
-RUN bin/rails webpacker:yarn_install
-
-CMD [ "bin/rails", "s", "-b", "0.0.0.0" ]

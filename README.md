@@ -2,6 +2,6 @@
 
 ## Architecture
 
-<p>
+<p align="center">
   <img src=".github/architecture.png">
 </p>

@@ -1,16 +1,19 @@
 version: '3.9'
 
 services:
-  application:
+  web:
     build: .
+    command: [ "bin/rails", "s", "-b", "0.0.0.0" ]
     ports:
       - 3000:3000
     volumes:
       - .:/usr/local/app
+  job:
+    build: .
+    command: [ "bundle", "exec", "sidekiq" ]
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.13.3
     environment:
       discovery.type: single-node
-    ports:
-      - 9200:9200
-      - 9300:9300
+  redis:
+    image: redis:6.2.4

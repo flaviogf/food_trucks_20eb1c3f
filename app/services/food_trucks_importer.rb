@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class FoodTrucksImporter
-  def initialize(service:, repository:)
+  def initialize(service: FoodTrucksHttpService.new, repository: FoodTrucksElasticsearchRepository.new)
     @service = service
     @repository = repository
   end

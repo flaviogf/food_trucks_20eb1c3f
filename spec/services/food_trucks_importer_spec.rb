@@ -4,36 +4,30 @@ require 'rails_helper'
 
 RSpec.describe FoodTrucksImporter do
   describe '#execute' do
-    let(:service) do
-      double('service', each_slice: [])
-    end
-
-    let(:repository) do
-      double('repository', bulk: [])
-    end
-
-    subject(:sut) do
+    subject(:food_trucks_importer) do
       FoodTrucksImporter.new(service: service, repository: repository)
     end
 
-    it 'has to call service#each_slice once' do
-      expect(service).to receive(:each_slice).once
-
-      sut.execute
+    let(:service) do
+      double('service')
     end
 
-    it 'has to call service#each_slice once with 50' do
-      expect(service).to receive(:each_slice).with(50).once
-
-      sut.execute
+    let(:repository) do
+      double('repository')
     end
 
-    it 'has to call repository#bulk once' do
-      expect(service).to receive(:each_slice).and_yield([1])
+    before do
+      allow(service).to receive(:each_slice).and_yield([])
 
-      expect(repository).to receive(:bulk).once
-
-      sut.execute
+      allow(repository).to receive(:bulk)
     end
+
+    after do
+      food_trucks_importer.execute
+    end
+
+    it { expect(service).to receive(:each_slice).with(50).once }
+
+    it { expect(repository).to receive(:bulk).with([]).once }
   end
 end

@@ -25,4 +25,14 @@ class FoodTruck
   def location
     Location.new(longitude: longitude, latitude: latitude)
   end
+
+  def to_h
+    {
+      food_items: food_items,
+      location: {
+        lon: longitude,
+        lat: latitude
+      }
+    }
+  end
 end

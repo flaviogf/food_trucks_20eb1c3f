@@ -4,10 +4,6 @@ services:
   web:
     build: .
     command: [ "bin/rails", "s", "-b", "0.0.0.0" ]
-    environment:
-      RAILS_ENV: "development"
-      RAILS_LOG_TO_STDOUT: "true"
-      SECRET_KEY_BASE: "1YAmKbPvk3+QZKoZjJY9lA=="
     ports:
       - 3000:3000
     volumes:
@@ -15,10 +11,6 @@ services:
   job:
     build: .
     command: [ "bundle", "exec", "sidekiq", "-q", "default" ]
-    environment:
-      RAILS_ENV: "development"
-      RAILS_LOG_TO_STDOUT: "true"
-      SECRET_KEY_BASE: "1YAmKbPvk3+QZKoZjJY9lA=="
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.13.3
     environment:

@@ -1,0 +1,4 @@
+food_trucks_job:
+  cron: '*/1 * * * *'
+  class: 'FoodTrucksJob'
+  queue: 'default'

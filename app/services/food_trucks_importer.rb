@@ -7,6 +7,8 @@ class FoodTrucksImporter
   end
 
   def execute
-    @service.each_slice(50) { |food_trucks| @repository.bulk(food_trucks) }
+    @repository.delete_all!
+
+    @service.each_slice(50) { |food_trucks| @repository.insert_all(food_trucks) }
   end
 end

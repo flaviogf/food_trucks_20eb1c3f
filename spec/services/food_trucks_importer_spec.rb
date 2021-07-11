@@ -19,7 +19,9 @@ RSpec.describe FoodTrucksImporter do
     before do
       allow(service).to receive(:each_slice).and_yield([])
 
-      allow(repository).to receive(:bulk)
+      allow(repository).to receive(:delete_all!)
+
+      allow(repository).to receive(:insert_all)
     end
 
     after do
@@ -28,6 +30,8 @@ RSpec.describe FoodTrucksImporter do
 
     it { expect(service).to receive(:each_slice).with(50).once }
 
-    it { expect(repository).to receive(:bulk).with([]).once }
+    it { expect(repository).to receive(:delete_all!).once }
+
+    it { expect(repository).to receive(:insert_all).with([]).once }
   end
 end

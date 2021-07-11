@@ -16,7 +16,7 @@ class FoodTrucksHttpService
   private
 
   def fetch_data(&block)
-    Net::HTTP.get_response(FILE_URI) { |resp| resp.read_body(&block) }
+    Net::HTTP.get_response(FILE_URI) { |resp| block.call(resp.body) }
   end
 
   def food_truck_from(row)

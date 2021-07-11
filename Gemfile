@@ -13,6 +13,7 @@ gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.4'
 gem 'sass-rails', '>= 6'
 gem 'sidekiq', '~> 6.2'
+gem 'sidekiq-cron', '~> 1.2'
 gem 'sqlite3', '~> 1.4'
 gem 'turbolinks', '~> 5'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

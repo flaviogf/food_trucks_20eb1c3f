@@ -24,15 +24,13 @@ RSpec.describe Api::V1::FoodTrucksController, type: :controller do
         }
       end
 
-      it do
+      before do
         get :index, params: params
-        expect(response).to have_http_status(:success)
       end
 
-      it do
-        get :index, params: params
-        expect(assigns(:food_trucks)).to eq(food_trucks)
-      end
+      it { expect(response).to have_http_status(:success) }
+
+      it { expect(assigns(:food_trucks)).to eq(food_trucks) }
     end
 
     context 'when longitude is not passed' do
@@ -42,10 +40,11 @@ RSpec.describe Api::V1::FoodTrucksController, type: :controller do
         }
       end
 
-      it do
-        expect(repository).not_to receive(:search)
+      after do
         get :index, params: params
       end
+
+      it { expect(repository).not_to receive(:search) }
     end
 
     context 'when latitude is not passed' do
@@ -55,10 +54,11 @@ RSpec.describe Api::V1::FoodTrucksController, type: :controller do
         }
       end
 
-      it do
-        expect(repository).not_to receive(:search)
+      after do
         get :index, params: params
       end
+
+      it { expect(repository).not_to receive(:search) }
     end
   end
 end

@@ -5,7 +5,7 @@ module Api
     class FoodTrucksController < ApiController
       def index
         @food_trucks = if params[:longitude].present? && params[:latitude].present?
-                         repository.search(params[:longitude], params[:latitude])
+                         repository.search(longitude: params[:longitude], latitude: params[:latitude])
                        else
                          []
                        end
@@ -14,7 +14,7 @@ module Api
       private
 
       def repository
-        @repository ||= FoodTruckElastisearchRepository.new
+        @repository ||= FoodTrucksElasticsearchRepository.new
       end
     end
   end

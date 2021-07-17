@@ -24,6 +24,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.2'
   gem 'pry', '~> 0.13.0'
   gem 'pry-byebug', '~> 3.9'
+  gem 'rails-controller-testing', '~> 1.0.5'
   gem 'rspec-rails', '~> 5.0'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'vcr', '~> 6.0'

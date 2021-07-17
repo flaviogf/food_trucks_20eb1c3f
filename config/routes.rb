@@ -8,5 +8,11 @@ Rails.application.routes.draw do
 
   root to: 'maps#index'
 
+  namespace :api do
+    namespace :v1 do
+      resources :food_trucks
+    end
+  end
+
   resources :maps
 end

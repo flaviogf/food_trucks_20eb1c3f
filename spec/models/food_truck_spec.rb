@@ -46,4 +46,42 @@ RSpec.describe FoodTruck do
 
     it { expect(food_truck.to_h).to eq(food_truck_hash) }
   end
+
+  describe '==' do
+    context 'when all properties are equal' do
+      subject do
+        build(:food_truck, food_items: 'Food Truck One', longitude: 0, latitude: 0)
+      end
+
+      let(:other) do
+        build(:food_truck, food_items: 'Food Truck One', longitude: 0, latitude: 0)
+      end
+
+      it { is_expected.to eq(other) }
+    end
+
+    context 'when property food_items is different' do
+      subject do
+        build(:food_truck, food_items: 'Food Truck One', longitude: 0, latitude: 0)
+      end
+
+      let(:other) do
+        build(:food_truck, food_items: 'Food Truck Two', longitude: 0, latitude: 0)
+      end
+
+      it { is_expected.not_to eq(other) }
+    end
+
+    context 'when property location is different' do
+      subject do
+        build(:food_truck, food_items: 'Food Truck One', longitude: 0, latitude: 0)
+      end
+
+      let(:other) do
+        build(:food_truck, food_items: 'Food Truck One', longitude: 1, latitude: 0)
+      end
+
+      it { is_expected.not_to eq(other) }
+    end
+  end
 end

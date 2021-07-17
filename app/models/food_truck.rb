@@ -35,4 +35,8 @@ class FoodTruck
       }
     }
   end
+
+  def ==(other)
+    food_items == other.food_items && location == other.location
+  end
 end

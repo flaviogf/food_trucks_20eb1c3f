@@ -5,6 +5,19 @@ class FoodTrucksElasticsearchRepository
     @client = client
   end
 
+  def search(longitude:, latitude:)
+    body = {
+      query: {
+        bool: {
+          must: [{ match_all: {} }],
+          filter: [{ geo_distance: { distance: '15km', location: { lat: latitude, lon: longitude } } }]
+        }
+      }
+    }
+
+    @client.search(index: 'food-trucks-v1', body: body).dig('hits', 'hits').collect(&method(:food_truck_from))
+  end
+
   def insert_all(food_trucks)
     body = food_trucks.collect { |food_truck| { index: { _index: 'food-trucks-v1', data: food_truck.to_h } } }
 
@@ -23,5 +36,13 @@ class FoodTrucksElasticsearchRepository
     body = food_truck_ids.collect { |id| { delete: { _index: 'food-trucks-v1', _id: id } } }
 
     @client.bulk(body: body)
+  end
+
+  private
+
+  def food_truck_from(hit)
+    FoodTruck.new(food_items: hit.dig('_source', 'food_items'),
+                  longitude: hit.dig('_source', 'location', 'lon').to_f,
+                  latitude: hit.dig('_source', 'location', 'lat').to_f)
   end
 end

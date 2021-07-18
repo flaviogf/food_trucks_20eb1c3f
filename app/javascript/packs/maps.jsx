@@ -8,7 +8,7 @@ const position = [37.7749, -122.4194]
 
 function Maps() {
   return (
-    <div class="maps">
+    <div className="maps">
       <MapContainer center={position} zoom={13} scrollWhenZoom={false} style={{ height: '100%', width: '100%' }}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -18,6 +18,20 @@ function Maps() {
           <Popup>Center of San Francisco</Popup>
         </Marker>
       </MapContainer>
+
+      <form className="maps__form">
+        <div className="maps__form-group">
+          <label>Longitude: <input type="number" /></label>
+        </div>
+
+        <div className="maps__form-group">
+          <label>Latitude: <input type="number" /></label>
+        </div>
+
+        <div>
+          <button className="maps__button">Search</button>
+        </div>
+      </form>
     </div>
   )
 }

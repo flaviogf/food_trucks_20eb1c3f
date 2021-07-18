@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+html, body {
+  font-family: 'Nunito Sans', sans-serif;
+  height: 100%;
+}

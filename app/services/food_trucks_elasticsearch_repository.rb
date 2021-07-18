@@ -10,7 +10,7 @@ class FoodTrucksElasticsearchRepository
       query: {
         bool: {
           must: [{ match_all: {} }],
-          filter: [{ geo_distance: { distance: '15km', location: { lat: latitude, lon: longitude } } }]
+          filter: [{ geo_distance: { distance: '2000m', location: { lat: latitude, lon: longitude } } }]
         }
       }
     }

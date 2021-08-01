@@ -1,12 +1,36 @@
-# Project
+<h1 align="center">
+  Food Trucks
+</h1>
 
-## Architecture
+<p align="center">
+  <a href="#rocket-project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#computer-techs">Techs</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#thinking-how-to-use">How to use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-license">License</a>
+</p>
+
+## :rocket: Project
+
+### Architecture
 
 <p align="center">
   <img src=".github/architecture.png">
 </p>
 
-## How to use
+### Preview
+
+<p align="center">
+  <img src=".github/preview.gif">
+</p>
+
+## :computer: Techs
+
+- Elasticsearch
+- Sidekiq
+- Ruby
+- Ruby on Rails
+
+## :thinking: How to use
 
 ```sh
 # Clone repository
@@ -35,5 +59,11 @@ curl -XPUT 'localhost:9200/food-trucks-v1' -H 'Content-Type: application/json' -
 # Start web and job
 docker-compose up -d web job
 
-# It will be running at http://localhost:3000
+# Application: http://localhost:3000
+# Kibana:      http://localhost:5601
+# Sidekiq:     http://localhost:3000/sidekiq
 ```
+
+## :memo: License
+
+This project contains the MIT license. See the file [LICENSE](LICENSE).

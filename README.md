@@ -27,6 +27,7 @@
 
 - Elasticsearch
 - Sidekiq
+- React.js
 - Ruby
 - Ruby on Rails
 

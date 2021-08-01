@@ -26,10 +26,10 @@
 ## :computer: Techs
 
 - Elasticsearch
-- Sidekiq
 - React.js
 - Ruby
 - Ruby on Rails
+- Sidekiq
 
 ## :thinking: How to use
 
